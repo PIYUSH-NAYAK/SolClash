@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --clash-blue: #5CA6F6;
+    --clash-purple: #9F5FF2;
+    --clash-gold: #FFC700;
+    --clash-red: #FF4444;
+    --clash-green: #00FF88;
+  }
+  
+  body {
+    @apply bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    min-height: 100vh;
+    background-attachment: fixed;
+  }
+  
+  html {
+    @apply antialiased;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  
+  .glow {
+    box-shadow: 0 0 20px rgba(255, 199, 0, 0.5);
+  }
+  
+  .glow-purple {
+    box-shadow: 0 0 20px rgba(159, 95, 242, 0.5);
+  }
+  
+  .glow-blue {
+    box-shadow: 0 0 20px rgba(92, 166, 246, 0.5);
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 10px rgba(255, 199, 0, 0.3);
+    }
+    50% {
+      box-shadow: 0 0 30px rgba(255, 199, 0, 0.8);
+    }
+  }
+  
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+  
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+  
+  @keyframes shimmer {
+    0% {
+      background-position: -100% 0;
+    }
+    100% {
+      background-position: 200% 0;
+    }
+  }
+  
+  .animate-shimmer {
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+}
