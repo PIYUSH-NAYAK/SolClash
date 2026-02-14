@@ -1,10 +1,9 @@
 'use client';
 
 import { useEffect, useRef } from 'react';
-import Phaser from 'phaser';
+import * as Phaser from 'phaser';
 import { SimpleGameEngine, GameState } from '../services/SimpleGameEngine';
 import { GameScene } from '../services/PhaserGameScene';
-import { useRouter } from 'next/navigation';
 
 interface PhaserGameCanvasProps {
   selectedCard: string | null;
@@ -18,7 +17,6 @@ export function PhaserGameCanvas({ selectedCard, onCardPlaced }: PhaserGameCanva
   const phaserGameRef = useRef<Phaser.Game | null>(null);
   const gameSceneRef = useRef<GameScene | null>(null);
   const engineRef = useRef<SimpleGameEngine | null>(null);
-  const router = useRouter();
 
   // Initialize Phaser game
   useEffect(() => {
@@ -100,7 +98,7 @@ export function PhaserGameCanvas({ selectedCard, onCardPlaced }: PhaserGameCanva
           : '💔 DEFEAT! Your King tower was destroyed!';
         
         alert(message);
-        router.push('/'); // Return to home
+        window.location.href = '/'; // Return to home
       }, 500);
     };
 
@@ -109,7 +107,7 @@ export function PhaserGameCanvas({ selectedCard, onCardPlaced }: PhaserGameCanva
     return () => {
       engine.stop();
     };
-  }, [router]);
+  }, []);
 
   const handleCanvasClick = (x: number, y: number) => {
     const currentCard = selectedCardRef.current;

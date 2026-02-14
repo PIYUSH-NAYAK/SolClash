@@ -1,4 +1,4 @@
-import Phaser from 'phaser';
+import * as Phaser from 'phaser';
 import type { GameState, Tower, Troop } from './SimpleGameEngine';
 
 export class GameScene extends Phaser.Scene {

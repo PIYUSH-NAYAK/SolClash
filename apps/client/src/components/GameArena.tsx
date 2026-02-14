@@ -1,10 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import { PhaserGameCanvas } from './PhaserGameCanvas';
+import dynamic from 'next/dynamic';
 import { ElixirBar } from './ElixirBar';
 import { DeckPanel } from './DeckPanel';
 import { Swords } from 'lucide-react';
+
+// Dynamic import to prevent SSR issues with Phaser
+const PhaserGameCanvas = dynamic(
+  () => import('./PhaserGameCanvas').then(mod => ({ default: mod.PhaserGameCanvas })),
+  { ssr: false }
+);
 
 export function GameArena() {
   const [selectedCard, setSelectedCard] = useState<string | null>(null);
